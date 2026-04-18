@@ -533,14 +533,22 @@ section {
 /* Responsive tweaks */
 @media (max-width: 768px) {
     /* Layout & Alignment */
-    section { padding: 12% 5%; }
-    .header { padding-top: 80px; text-align: center; flex-direction: column; gap: 2rem; }
-    .header-content { display: flex; flex-direction: column; align-items: center; }
-    .header-image img { max-width: 100%; border-radius: 16px; }
-    .nav { padding: 1.5rem 5%; flex-direction: column; gap: 1rem; text-align: center; }
-    .fee { justify-content: center; text-align: center; gap: 1.5rem; flex-direction: column; }
-    .course-fee { width: 100%; min-width: unset; }
+    section { padding: 15% 5%; }
+    .header { padding-top: 100px; text-align: center; flex-direction: column; gap: 2.5rem; }
+    .header-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .learn-how p { font-size: 1rem; text-align: center; margin-bottom: 2rem; }
+    .header-image img { max-width: 100%; width: 90vw; border-radius: 16px; margin-top: 1rem; }
+    
+    .nav { padding: 1.5rem 5%; flex-direction: column; gap: 1.5rem; text-align: center; background: rgba(10, 10, 15, 0.95); }
+    .aniverse-logo p { font-size: 1.2rem; }
+    
+    .fee { justify-content: center; text-align: center; gap: 1.5rem; flex-direction: column; padding: 10% 5%; }
+    .course-fee { width: 100%; min-width: unset; padding: 1.5rem; }
+    .course-fee p:nth-child(2) { font-size: 2.5rem; }
+    
     .what-header-flex { flex-direction: column; text-align: center; gap: 2rem; }
+    .what-image img { width: 80%; max-width: 250px; }
+    
     .details { flex-direction: column; gap: 1.5rem; width: 100%; }
     
     /* Grids to single column */
@@ -553,19 +561,23 @@ section {
     /* Padding adjustments for cards */
     .detailed-list > div, .step1, .certificate, .skills-covered, .deatails2 {
         padding: 1.5rem;
+        text-align: center;
     }
 
     /* Typography scaling */
-    .animate p { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+    .animate p { font-size: clamp(2.5rem, 12vw, 3.5rem); margin-bottom: 0; }
     .like p, .pro p { font-size: 2rem; }
     .animation-class p { font-size: 0.75rem; margin-bottom: 1.5rem; }
-    .the-curriculum2, .the-process p:nth-child(2), .everything p:nth-child(1) { font-size: 2rem; }
-    .skills-covered p:nth-child(1), .deatails2 p:nth-child(1) { font-size: 2.5rem; }
+    .the-curriculum2, .the-process p:nth-child(2), .everything p:nth-child(1) { font-size: 1.8rem; }
+    .skills-covered p:nth-child(1), .deatails2 p:nth-child(1) { font-size: 2.2rem; }
     .footer p:first-child { font-size: 2rem; }
     .advanced, .register, .cert { font-size: 1.1rem; }
     .more-details, .step1 p:last-child, .earn { font-size: 0.9rem; }
     
     /* Buttons */
-    button { width: 100%; max-width: 320px; padding: 1rem; }
-    .enroll, .curriculum { width: 100%; display: flex; justify-content: center; }
+    button { width: 100%; max-width: 100%; padding: 1.2rem; border-radius: 12px; }
+    .enroll, .curriculum { width: 100%; display: block; }
+    
+    /* Fix horizontal overflow */
+    body, html { overflow-x: hidden; width: 100%; }
 }
