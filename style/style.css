@@ -539,10 +539,22 @@ section {
     .learn-how p { font-size: 1rem; text-align: center; margin-bottom: 2rem; }
     .header-image img { max-width: 100%; width: 90vw; border-radius: 16px; margin-top: 1rem; }
     
-    .nav { padding: 1.5rem 5%; flex-direction: column; gap: 1.5rem; text-align: center; background: rgba(10, 10, 15, 0.95); }
-    .aniverse-logo p { font-size: 1.2rem; }
+    /* True Mobile Navbar */
+    .nav { 
+        padding: 1rem 5%; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        background: rgba(10, 10, 15, 0.95); 
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        z-index: 1000;
+    }
+    .aniverse-logo p { font-size: 0.9rem; letter-spacing: 1px; }
+    .enrol a { padding: 0.5rem 1rem; font-size: 0.75rem; }
     
-    .fee { justify-content: center; text-align: center; gap: 1.5rem; flex-direction: column; padding: 10% 5%; }
+    .fee { justify-content: center; text-align: center; gap: 1.5rem; flex-direction: column; padding: 10% 5%; margin-top: 60px; }
     .course-fee { width: 100%; min-width: unset; padding: 1.5rem; }
     .course-fee p:nth-child(2) { font-size: 2.5rem; }
     
