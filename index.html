@@ -3,206 +3,637 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn your ideas into stunning phone animations with mentorship, prompts, scripts, sound, and WhatsApp support.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style/style.css">
-    <title>Aniverse Hub</title>
+    <title>Aniverse Hub - Mobile Animation Course</title>
 </head>
 <body>
+    <!-- Background Particles Canvas for Glow/Power Mode -->
+    <canvas id="particleCanvas"></canvas>
 
-    
-    <div class="nav">
-        <div class="aniverse-logo">
-            <p>ANIVERSE HUB</p>
-        </div>
-        <div>
-            <nav>
-                <li class="enrol"><a href="https://wa.me/2348069914896">ENROLL NOW</a></li>
-            </nav>
-        </div>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>⚡ <strong>No laptop. No prior experience.</strong> Just your phone, your ideas, and the right guidance.</p>
+        <a class="banner-link" href="http://luma.com/f4995q19" target="_blank">Register Online</a>
     </div>
 
-
-    <section class="header">
-        <div class="header-content">
-            <div class="animation-class">
-                <p>ANIMATION CLASS 3.0 Now ENROLLING</p>
-            </div>
-            <div class="animate">
-                <p>ANIMATE</p>
-            </div>
-            <div class="like">
-                <p>LIKE A</p>
-            </div>
-            <div class="pro">
-                <p>PRO.</p>
-            </div>
-            <div class="frame">
-                <p>ONE FRAME AT A TIME.</p>
-            </div>
-            <div class="learn-how">
-                <p>Learn how to bring your imagination to life.<br>Master advanced animation, powerful<br> scripts, cinematic visuals and realistic<br> voiceovers -  from scratch, with mentorship<br>every step of the way.</p>
-            </div>
+    <!-- Navigation -->
+    <header class="nav" aria-label="Primary navigation">
+        <div class="aniverse-logo">
+            <span class="logo-icon">🎬</span>
+            <p>ANIVERSE HUB</p>
         </div>
-        <div class="header-image">
-            <img src="images/hero.png" alt="Anime Character">
-        </div>
-    </section>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="sandbox.html">PROMPT SANDBOX</a></li>
+                <li><a href="gallery.html">STUDENT GALLERY</a></li>
+                <li><a href="#curriculum">CURRICULUM</a></li>
+            </ul>
+        </nav>
+        <a class="btn btn-primary nav-enroll" href="http://luma.com/f4995q19" target="_blank">
+            <span>Enroll Now</span> <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </header>
 
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Left Column: Copy and Flyer Badges -->
+            <div class="hero-copy reveal">
+                <span class="eyebrow"><i class="fa-solid fa-mobile-screen-button"></i> Mobile-First Animation Mastery</span>
+                <h1 class="glow-text">Turn Your Ideas into <br><span class="highlight-text">Stunning Animations</span> <br>Using Just Your Phone</h1>
+                
+                <div class="orange-pill-banner">
+                    <p>No laptop. No prior experience. Just your phone, your ideas, and the right guidance.</p>
+                </div>
 
-    <section class="fee">
-        <div class="enroll">
-            <button><a href="https://wa.me/2348069914896">ENROLL VIA WHATSAPP </a></button>
-        </div>
-        <div class="curriculum">
-            <p>
-                <button><a href="">SEE CURRICULUM</a></button>
-            </p>
-        </div>
+                <!-- Flyer What You Will Learn Card -->
+                <div class="flyer-learn-card">
+                    <div class="flyer-card-header">
+                        <h3>WHAT YOU WILL LEARN</h3>
+                    </div>
+                    <ul class="flyer-learn-list">
+                        <li><i class="fa-solid fa-check"></i> <span>Craft advanced animation prompts</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Write compelling and powerful animation scripts.</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Create stunning visuals for animation</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Produce smooth and dynamic animated videos</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Generate realistic and expressive voiceovers</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Combine visuals, motion, and sound into a seamless animation</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span>Learn the tools and workflows that make animation easier and faster</span></li>
+                    </ul>
+                </div>
 
-        <div class="course-fee">
-            <p><i class="fa-solid fa-tags"></i> COURSE<BR>FEE</p>
-            <P>₦15,000</P>
-            <P>.One-time.<br>Ongoing Reg.</P>
-        </div>
+                <!-- Flyer Badges -->
+                <div class="flyer-badges">
+                    <div class="badge-item">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <div>
+                            <span class="badge-title">1ST AUGUST 2026</span>
+                        </div>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <span class="badge-title">LIVE ON WHATSAPP</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="activities">
-            <p>MENTORSHIP     ANIMATION PROMPT     SCRIPT WRITING     VISUAL CREATION     DYNAMIC VIDEOS     VOICE OVERS     MOTION SOUND     CERTIFICATE   </p>
-        </div>
-    </section>
+                <!-- Practical, Mentorship, Bonus Box -->
+                <div class="flyer-bonus-box">
+                    <span class="bonus-box-title">PRACTICAL & MENTORSHIP/BONUS</span>
+                    <ul class="bonus-box-list">
+                        <li><i class="fa-solid fa-check"></i> Certificate of Completion</li>
+                        <li><i class="fa-solid fa-check"></i> Hands-on Practicals</li>
+                        <li><i class="fa-solid fa-check"></i> Mentorship & Support</li>
+                    </ul>
+                </div>
 
-    <section class="detail-section">
-        <div class="details">
-            <div class="skills-covered">
-                <p class="7+"><i class="fa-solid fa-layer-group"></i> 7+</p>
-                <p class="skill-covered">SKILLS COVERED</p>
-                <p class="10k-naira">₦15k</p>
-                <p class="one-time">ONE-TIME FEE</p>
-            </div>
-            <div class="deatails2">
-                <p class="100%"><i class="fa-solid fa-laptop-code"></i> 100%</p>
-                <p>HANDS-ON<br>PRACTICALS</p>
-                <p class="ogoing-icon"><i class="fa-solid fa-check-circle"></i></p>
-                <p class="registration">ONGOING<br>REGISTRATION</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="what-you">
-        <div class="what-header-flex">
-            <div>
-                <p class="what">WHAT YOU'LL MASTER</p>
-                <p class="the-curriculum2">THE CURRICULUM</p>
-                <p class="modules"> 7 modules. Real skills. Zero fluff. Everything you<br>need to go from zero to animation creator.</p>
-            </div>
-            <div class="what-image">
-                <img src="images/abstract.png" alt="Abstract 3D Shapes">
-            </div>
-        </div>
-
-        <div class="detailed-list">
-            <div class="01">
-                <p class="advanced"><i class="fa-solid fa-pen-nib"></i> Advanced Animation<br>prompt</p>
-                <p class="more-details">Learn the exact prompting techniques that produce cinematic, high-quality animations every time — no guesswork, only results.</p>
-            </div>
-
-            <div class="02">
-                <p class="advanced"><i class="fa-solid fa-scroll"></i> Compelling Animation<br>Scripts</p>
-                <p class="more-details">Write powerful scripts with structure, emotion, and clarity — the backbone of every great animation project.</p>
-            </div>
-
-            <div class="03">
-                <p class="advanced"><i class="fa-solid fa-wand-magic-sparkles"></i> Stunning Visual<br>Creation</p>
-                <p class="more-details">Design eye-catching visuals and scene concepts that stop the scroll and make your work impossible to ignore.</p>
-            </div>
-
-            <div class="04">
-                <p class="advanced"><i class="fa-solid fa-video"></i> Smooth Dynamic<br>Videos</p>
-                <p class="more-details">Produce fluid, polished animated videos with smooth transitions, dynamic motion, and professional pacing.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary btn-large" href="http://luma.com/f4995q19" target="_blank">
+                        <i class="fa-solid fa-graduation-cap"></i> Register Online (<span class="price-value">₦2,000</span>)
+                    </a>
+                    <a class="btn btn-secondary btn-large" href="#curriculum">See Curriculum Details</a>
+                </div>
             </div>
 
-            <div class="05">
-                <p class="advanced"><i class="fa-solid fa-microphone-lines"></i> Realistic Voiceovers</p>
-                <p class="more-details">Generate expressive, lifelike voiceovers that bring your characters and narrations to life with real emotion.</p>
+            <!-- Right Column: 3D Parallax Interactive Scene -->
+            <div class="hero-scene-container reveal">
+                <div class="parallax-stage" id="parallaxStage">
+                    <!-- Layer 1: Glowing Abstract Background -->
+                    <div class="parallax-layer bg-layer" data-depth="0.1">
+                        <div class="glow-circle gc-orange"></div>
+                        <div class="glow-circle gc-purple"></div>
+                        <div class="grid-overlay"></div>
+                    </div>
+
+                    <!-- Layer 2: Hanging Lightbulb (Sways and Toggles Power Mode) -->
+                    <div class="parallax-layer lightbulb-layer" data-depth="0.3">
+                        <div class="hanging-lightbulb" id="lightbulb" title="Click to Toggle Ambient Power Mode!">
+                            <div class="wire"></div>
+                            <svg class="bulb-svg" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 50,0 L 50,30" stroke="#ff8a00" stroke-width="4"/>
+                                <rect x="42" y="30" width="16" height="12" rx="3" fill="#666"/>
+                                <path d="M 35,50 C 35,75 65,75 65,50 C 65,35 35,35 35,50 Z" fill="rgba(255,255,255,0.05)" stroke="#666" stroke-width="2" class="bulb-glass"/>
+                                <path d="M 45,52 L 45,62 M 55,52 L 55,62 M 45,62 L 55,62" stroke="#ffaa00" stroke-width="2" fill="none"/>
+                                <circle cx="50" cy="50" r="10" class="bulb-glow-core" fill="#ffaa00"/>
+                            </svg>
+                            <span class="click-me-tip">Click Me!</span>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3: Main Character Portrait -->
+                    <div class="parallax-layer character-layer" data-depth="0.5">
+                        <img src="images/hero.png" alt="Aniverse Hub Mascot" class="main-character-img">
+                    </div>
+
+                    <!-- Layer 4: Interactive Holographic UI Overlay -->
+                    <div class="parallax-layer hologram-layer" data-depth="0.8">
+                        <div class="hologram-card">
+                            <div class="hologram-header">
+                                <div class="holo-dot"></div>
+                                <span class="holo-title">MOBILE EDITOR V1.8</span>
+                            </div>
+                            <div class="hologram-body">
+                                <div class="holo-timeline">
+                                    <div class="holo-bar" style="width: 70%"></div>
+                                    <div class="holo-playhead"></div>
+                                    <div class="holo-keyframes">
+                                        <div class="keyframe" style="left: 20%"></div>
+                                        <div class="keyframe" style="left: 45%"></div>
+                                        <div class="keyframe" style="left: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="holo-waveform">
+                                    <div class="wave-bar" style="height: 15px"></div>
+                                    <div class="wave-bar" style="height: 25px"></div>
+                                    <div class="wave-bar" style="height: 40px"></div>
+                                    <div class="wave-bar" style="height: 20px"></div>
+                                    <div class="wave-bar" style="height: 35px"></div>
+                                    <div class="wave-bar" style="height: 10px"></div>
+                                </div>
+                            </div>
+                            <div class="holo-status">PROCESSING PROMPT...</div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 5: Price Bubble -->
+                    <div class="parallax-layer price-layer" data-depth="0.9">
+                        <div class="price-bubble-3d">
+                            <span class="price-top">FOR</span>
+                            <span class="price-value">₦2,000</span>
+                            <span class="price-bottom">ONLY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats reveal">
+            <div class="stats-grid">
+                <div class="stat-card tilt-card">
+                    <div class="stat-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <p class="stat-value" data-target="7">0</p>
+                    <p class="stat-label">Bite-sized Modules</p>
+                </div>
+                <div class="stat-card tilt-card">
+                    <div class="stat-icon"><i class="fa-solid fa-person-running"></i></div>
+                    <p class="stat-value" data-target="100">0%</p>
+                    <p class="stat-label">Practical Hands-on Learning</p>
+                </div>
+                <div class="stat-card tilt-card">
+                    <div class="stat-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                    <p class="stat-value" data-target="1">0</p>
+                    <p class="stat-label">Active Support Group</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Curriculum Section -->
+        <section class="curriculum-section reveal" id="curriculum">
+            <div class="section-intro">
+                <p class="section-label">CURRICULUM DETAILS</p>
+                <h2>Mastering the 7 Core Animation Skills</h2>
+                <p>Detailed modules showing step-by-step what you'll build and practice directly on your phone.</p>
             </div>
 
-            <div class="06">
-                <p class="advanced"><i class="fa-solid fa-photo-film"></i> Visuals + Motion +<br>Sound</p>
-                <p class="more-details">Combine all elements into one seamless, cohesive animation — the full production pipeline, start to finish.</p>
+            <div class="curriculum-grid">
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">01</div>
+                    <h3><i class="fa-solid fa-pen-nib"></i> Advanced Prompt Engineering</h3>
+                    <p>Learn target keywords, aspect ratios, and custom seeds to generate cinematic animation scenes and fluid character motion using mobile AI generators.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">02</div>
+                    <h3><i class="fa-solid fa-scroll"></i> High-Converting Scriptwriting</h3>
+                    <p>Structure scripts for quick hooks, emotional resonance, and viral pacing specifically designed for short-form video formats.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">03</div>
+                    <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Visual Assets & Character Design</h3>
+                    <p>Build visually coherent characters, style consistent environments, and composition techniques to make your frames pop on mobile feeds.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">04</div>
+                    <h3><i class="fa-solid fa-video"></i> Video Editing & Motion Pacing</h3>
+                    <p>Master editing software directly on your phone. Adjust frame rates, stitch scenes, and time transitions perfectly to the beat.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">05</div>
+                    <h3><i class="fa-solid fa-microphone-lines"></i> AI Voice & Audio Generation</h3>
+                    <p>Clean and edit voiceovers, select matching presets, and utilize sound effects to enhance character depth and mood.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">06</div>
+                    <h3><i class="fa-solid fa-cubes"></i> End-to-End Mobile Workflow</h3>
+                    <p>Combine prompt generation, script formatting, rendering, editing, and audio assembly into one smooth and optimized phone pipeline.</p>
+                </div>
+                <div class="curriculum-card tilt-card">
+                    <div class="card-num">07</div>
+                    <h3><i class="fa-solid fa-money-bill-trend-up"></i> Monetization & Agency Model</h3>
+                    <p>Bonus module: How to secure clients, package your animation services, and monetize your content on TikTok, YouTube Shorts, and Instagram Reels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonuses & Pricing Section -->
+        <section class="bonuses-section reveal" id="bonuses">
+            <div class="section-intro">
+                <p class="section-label">EXCLUSIVE RESOURCES</p>
+                <h2>Bonuses Included in Your Enrollment</h2>
+                <p>Register today and instantly receive access to these high-value workflow assets.</p>
             </div>
 
-            <div class="07">
-                <p class="advanced"><i class="fa-solid fa-toolbox"></i> Pro tools & workflow</p>
-                <p class="more-details">Discover the best tools and fastest workflows used by real animation creators — so you work smarter, not harder, and produce more content faster than anyone around you.</p>
+            <div class="bonuses-grid">
+                <div class="bonus-card-wide tilt-card">
+                    <div class="bonus-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="bonus-info">
+                        <h3>Accredited Completion Certificate</h3>
+                        <p>Receive a verifiable digital certificate detailing your accomplishments in mobile-first animations and AI creative workflows, perfect for listing on resumes or social profiles.</p>
+                    </div>
+                </div>
+
+                <div class="bonus-card-wide tilt-card">
+                    <div class="bonus-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="bonus-info">
+                        <h3>Live 1-on-1 Mentorship & Feedback</h3>
+                        <p>Access our private WhatsApp group for daily peer-reviews, direct feedback from lead animators, prompt optimizations, and dedicated Q&A support.</p>
+                    </div>
+                </div>
+
+                <div class="bonus-card-wide tilt-card">
+                    <div class="bonus-icon"><i class="fa-solid fa-gift"></i></div>
+                    <div class="bonus-info">
+                        <h3>Premium Resource & Prompt Vault</h3>
+                        <p>Unlock our exclusive templates, copy-paste prompt formulas, background score recommendations, and high-quality voice presets to build professional results faster.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="process-section reveal" id="how-it-works">
+            <div class="section-intro">
+                <p class="section-label">THE TIMELINE</p>
+                <h2>Your Step-by-Step Path to Launch</h2>
+                <p>We've streamlined the learning process into a simple, friction-free journey.</p>
             </div>
 
-        </div>
-    </section>
-
-
-    <section class="the-processes">
-        <div class="the-process">
-            <p>THE PROCESS</p>
-            <p>HOW IT <span>works</span></p>
-        </div>
-        <div class="listing-process">
-            <div class="step1">
-                <p class="01">STEP 01</p>
-                <p class="register"><i class="fa-solid fa-user-plus"></i> Register</p>
-                <p>Pay the one-time fee of ₦10,000 and secure your spot instantly via WhatsApp. No delays, no stress.</p>
+            <div class="process-timeline">
+                <div class="process-step tilt-card">
+                    <span class="step-num">01</span>
+                    <h3>Secure Your Spot</h3>
+                    <p>Click enroll, secure your spot online, and instantly get added to the exclusive workspace group.</p>
+                </div>
+                <div class="process-step tilt-card">
+                    <span class="step-num">02</span>
+                    <h3>Learn & Build Daily</h3>
+                    <p>Go through the 7 practical mobile modules. Learn at your own pace with bite-sized, video-guided tutorials.</p>
+                </div>
+                <div class="process-step tilt-card">
+                    <span class="step-num">03</span>
+                    <h3>Submit Practical Projects</h3>
+                    <p>Participate in hands-on challenges, get constructive critiques from mentors, and refine your animation style.</p>
+                </div>
+                <div class="process-step tilt-card">
+                    <span class="step-num">04</span>
+                    <h3>Graduate & Launch</h3>
+                    <p>Get your completion certificate, launch your portfolio, and confidently offer animation services to brands and businesses.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="step1">
-                <p class="02">STEP 02</p>
-                <p class="register"><i class="fa-solid fa-book-open"></i> Learn</p>
-                <p>Access all 7 modules — lessons, prompts, scripts, and real examples you can apply immediately.</p>
+        <!-- FAQ Section -->
+        <section class="faq-section reveal" id="faq">
+            <div class="section-intro">
+                <p class="section-label">HAVE QUESTIONS?</p>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about the course, mentorship, and mobile pipelines.</p>
             </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span class="faq-question">Do I need a laptop for this course?</span>
+                        <span class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            No! This course is specifically designed for mobile creators. You will learn to draft prompts, edit scripts, generate audio, render animations, and assemble the final video—all 100% on your phone (Android or iOS).
+                        </div>
+                    </div>
+                </div>
 
-            <div class="step1">
-                <p class="03">STEP 03</p>
-                <p class="register"><i class="fa-solid fa-dumbbell"></i> Practice</p>
-                <p>Build real projects with hands-on practicals. Get direct feedback from your mentor throughout.</p>
-            </div>
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span class="faq-question">Is this course suitable for complete beginners?</span>
+                        <span class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            Absolutely! We start from the absolute basics of prompt generation and scriptwriting. You don't need any prior animation, design, or coding experience to get started.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="step1">
-                <p class="04">STEP 04</p>
-                <p class="register"><i class="fa-solid fa-medal"></i> Create</p>
-                <p>Graduate with your certificate and start producing animations that attract real attention and real clients.</p>
-            </div>
-        </div>
-    </section>
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span class="faq-question">Which AI tools will we be using?</span>
+                        <span class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            We will cover free and premium mobile-optimized generators (such as Luma Dream Machine, Runway Gen-3, Kling AI, Midjourney, ElevenLabs, and CapCut) and show you how to leverage their mobile interfaces or web pipelines effectively.
+                        </div>
+                    </div>
+                </div>
 
-    <section class="bonuses-pricing">
-        <div class="everything">
-            <p class="inludeed">Everything Included</p>
-            <p class="bonus">BONUSES & PRICING</p>
-        </div>
-        
-        <div class="listed-bonus">
-            <div class="certificate">
-                <p class="cert">Certificate of Completion</p>
-                <p class="earn">Earn a recognized certificate to showcase your animation skills to clients, brands, and employers.</p>
-            </div>
-            <div class="certificate">
-                <p class="cert">Hands-on Practicals</p>
-                <p class="earn">Every module includes real projects — you build as you learn. No passive watching, only active creating.</p>
-            </div>
-            <div class="certificate">
-                <p class="cert">Mentorship & Support</p>
-                <p class="earn">Direct access to your instructor for questions, reviews, and guidance all through the course.</p>
-            </div>
-            <div class="certificate">
-                <p class="cert">All Tools & Resources</p>
-                <p class="earn">Every tool, template, and resource you need is included. Show up ready to learn — we've got the rest.</p>
-            </div>
-        </div>
-    </section>
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span class="faq-question">How does the mentorship work?</span>
+                        <span class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            Once you register, you are added to our private WhatsApp support group. You can post your weekly practical assignments, ask questions, and get constructive feedback directly from the instructor and peers.
+                        </div>
+                    </div>
+                </div>
 
-    <section class="footer">
-        <p>READY<br>TO START?</p>
-        <P>The future of creativity is animated — and it starts here. Reach out now. Your spot is one message away.</P>
-        <p><button><a href="https://wa.me/2348069914896">ENROLL VIA WHATSAPP</a></button></p>
+                <div class="faq-item">
+                    <button class="faq-header" aria-expanded="false">
+                        <span class="faq-question">Is the certificate verifiable?</span>
+                        <span class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-body">
+                        <div class="faq-content">
+                            Yes! Every graduating student receives a digital certificate of completion with a unique ID code that can be shared on LinkedIn, resumes, or portfolios.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    </section>
+        <!-- Footer Section -->
+        <section class="footer-cta reveal">
+            <div class="footer-cta-container">
+                <p class="footer-title">THE FUTURE OF CREATIVITY IS ANIMATED</p>
+                <p class="footer-desc">No laptops needed. No previous design background required. Join hundreds of students turning their simple mobile prompts into cinema-quality animations.</p>
+                <a class="btn btn-primary btn-cta" href="http://luma.com/f4995q19" target="_blank">
+                    <i class="fa-solid fa-graduation-cap"></i> Enroll Online (<span class="price-value">₦2,000</span>)
+                </a>
+                
+                <div class="footer-contact-row">
+                    <span><i class="fa-brands fa-whatsapp"></i> +2348069914896</span>
+                    <span><i class="fa-brands fa-tiktok"></i> Aniverse.hub</span>
+                </div>
+                
+                <p class="copyright">&copy; 2026 Aniverse Hub. All Rights Reserved. Designed for creators globally.</p>
+            </div>
+        </section>
+    </main>
 
+    <!-- JavaScript Controls -->
+    <script src="global.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', event => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Counters for Stats Section
+        const counters = document.querySelectorAll('.stat-value');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const value = parseInt(entry.target.dataset.target, 10);
+                    const isPercent = entry.target.textContent.includes('%');
+                    let count = 0;
+                    const duration = 1500; // ms
+                    const increment = value / (duration / 16); // ~60fps
+                    
+                    const update = () => {
+                        count += increment;
+                        if (count >= value) {
+                            entry.target.textContent = isPercent ? `${value}%` : value;
+                        } else {
+                            entry.target.textContent = isPercent ? `${Math.floor(count)}%` : Math.floor(count);
+                            requestAnimationFrame(update);
+                        }
+                    };
+                    update();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // 3D Parallax MouseMove Effect on Hero Stage
+        const parallaxStage = document.getElementById('parallaxStage');
+        const layers = document.querySelectorAll('.parallax-layer');
+
+        if (parallaxStage) {
+            parallaxStage.addEventListener('mousemove', (e) => {
+                const rect = parallaxStage.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Tilt stage slightly
+                const tiltX = (y / (rect.height / 2)) * -12; // Max 12deg tilt
+                const tiltY = (x / (rect.width / 2)) * 12;  // Max 12deg tilt
+                parallaxStage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
+                // Translate Z and move layers out of sync
+                layers.forEach(layer => {
+                    const depth = parseFloat(layer.getAttribute('data-depth')) || 0;
+                    const moveX = (x / (rect.width / 2)) * depth * 25;
+                    const moveY = (y / (rect.height / 2)) * depth * 25;
+                    const translateZ = depth * 40;
+                    
+                    // Keep wire/lightbulb aligned, translate children
+                    if (layer.classList.contains('lightbulb-layer')) {
+                        layer.style.transform = `translateX(${moveX * 0.5}px) translateY(${moveY * 0.2}px) translateZ(${translateZ}px)`;
+                    } else {
+                        layer.style.transform = `translateX(${moveX}px) translateY(${moveY}px) translateZ(${translateZ}px)`;
+                    }
+                });
+            });
+
+            // Smooth Reset on mouse leave
+            parallaxStage.addEventListener('mouseleave', () => {
+                parallaxStage.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                layers.forEach(layer => {
+                    layer.style.transform = 'translateX(0px) translateY(0px) translateZ(0px)';
+                });
+            });
+        }
+
+        // 3D Mouse Tilt Effect on Content Cards (tilt-card)
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const tiltX = (y / (rect.height / 2)) * -6; // max 6 deg
+                const tiltY = (x / (rect.width / 2)) * 6;  // max 6 deg
+                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // Ambient Power Mode Toggle with interactive lightbulb
+        const lightbulb = document.getElementById('lightbulb');
+        const body = document.body;
+        const particleCanvas = document.getElementById('particleCanvas');
+        let powerMode = false;
+
+        if (lightbulb) {
+            lightbulb.addEventListener('click', () => {
+                powerMode = !powerMode;
+                if (powerMode) {
+                    body.classList.add('power-mode');
+                    lightbulb.classList.add('glowing');
+                    createFlashEffect();
+                } else {
+                    body.classList.remove('power-mode');
+                    lightbulb.classList.remove('glowing');
+                }
+            });
+        }
+
+        function createFlashEffect() {
+            const flash = document.createElement('div');
+            flash.style.position = 'fixed';
+            flash.style.top = '0';
+            flash.style.left = '0';
+            flash.style.width = '100vw';
+            flash.style.height = '100vh';
+            flash.style.backgroundColor = 'rgba(255, 138, 0, 0.15)';
+            flash.style.zIndex = '9999';
+            flash.style.pointerEvents = 'none';
+            flash.style.transition = 'opacity 0.4s ease-out';
+            document.body.appendChild(flash);
+            setTimeout(() => {
+                flash.style.opacity = '0';
+                setTimeout(() => flash.remove(), 400);
+            }, 50);
+        }
+
+        // Particle Canvas logic (Runs background starfields or dust particles)
+        if (particleCanvas) {
+            const ctx = particleCanvas.getContext('2d');
+            let particles = [];
+
+            const resizeCanvas = () => {
+                particleCanvas.width = window.innerWidth;
+                particleCanvas.height = window.innerHeight;
+            };
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * particleCanvas.width;
+                    this.y = Math.random() * particleCanvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 0.4 - 0.2;
+                    this.speedY = Math.random() * -0.5 - 0.1;
+                    this.alpha = Math.random() * 0.5 + 0.2;
+                    this.color = Math.random() > 0.5 ? '255, 107, 0' : '157, 78, 221'; // orange or purple
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Extra velocity & size when in Power Mode
+                    if (powerMode) {
+                        this.y += this.speedY * 1.5; 
+                        this.alpha += (Math.random() * 0.1 - 0.05);
+                        this.alpha = Math.min(Math.max(this.alpha, 0.1), 0.9);
+                    }
+
+                    if (this.y < 0 || this.x < 0 || this.x > particleCanvas.width) {
+                        this.reset();
+                        this.y = particleCanvas.height;
+                    }
+                }
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.shadowBlur = powerMode ? this.size * 3 : 0;
+                    ctx.shadowColor = `rgb(${this.color})`;
+                    ctx.fillStyle = `rgb(${this.color})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            // Create particles
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+
+            const animateParticles = () => {
+                ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateParticles);
+            };
+            animateParticles();
+        }
+
+        // FAQ Accordion Toggle Logic
+        document.querySelectorAll('.faq-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.faq-item');
+                const body = item.querySelector('.faq-body');
+                const isAlreadyActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-body').style.maxHeight = '0';
+                    otherItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+                });
+                
+                if (!isAlreadyActive) {
+                    item.classList.add('active');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

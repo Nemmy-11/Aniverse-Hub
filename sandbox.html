@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experiment with AI animation prompts in our interactive mobile sandbox and preview simulated rendering.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>AI Prompt Sandbox - Aniverse Hub</title>
+</head>
+<body>
+    <!-- Background Particles Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>⚡ <strong>No laptop. No prior experience.</strong> Just your phone, your ideas, and the right guidance.</p>
+    </div>
+
+    <!-- Navigation -->
+    <header class="nav" aria-label="Primary navigation">
+        <div class="aniverse-logo">
+            <span class="logo-icon">🎬</span>
+            <p>ANIVERSE HUB</p>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="sandbox.html">PROMPT SANDBOX</a></li>
+                <li><a href="gallery.html">STUDENT GALLERY</a></li>
+                <li><a href="index.html#curriculum">CURRICULUM</a></li>
+            </ul>
+        </nav>
+        <a class="btn btn-primary nav-enroll" href="http://luma.com/f4995q19" target="_blank">
+            <span>Enroll Now</span> <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </header>
+
+    <main>
+        <section class="sandbox-section">
+            <div class="section-intro reveal">
+                <p class="section-label">INTERACTIVE TEASER</p>
+                <h1>AI Animation Sandbox</h1>
+                <p>Learn how our prompt pipeline works. Choose your parameters below, hit render, and watch the AI bring your scene to life inside the virtual phone screen.</p>
+            </div>
+
+            <div class="sandbox-container">
+                <!-- Left Column: Inputs -->
+                <div class="sandbox-options-panel reveal">
+                    <!-- Option 1: Subject -->
+                    <div class="option-group">
+                        <label><i class="fa-solid fa-robot"></i> Choose Subject</label>
+                        <div class="grid-choices" id="subjectChoices">
+                            <div class="choice-chip active" data-value="Mech Warrior">Mech Warrior</div>
+                            <div class="choice-chip" data-value="Cyberpunk Rider">Cyber Rider</div>
+                            <div class="choice-chip" data-value="Aesthetic Castle">Sky Pagoda</div>
+                            <div class="choice-chip" data-value="Cosmic Nebula">Space Vortex</div>
+                            <div class="choice-chip" data-value="Retro Sports Car">Retro Drift</div>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Style -->
+                    <div class="option-group">
+                        <label><i class="fa-solid fa-palette"></i> Animation Style</label>
+                        <div class="grid-choices" id="styleChoices">
+                            <div class="choice-chip active" data-value="Retro Anime">90s Anime</div>
+                            <div class="choice-chip" data-value="Cyber Neon">Cyber Neon</div>
+                            <div class="choice-chip" data-value="Pencil Sketch">Ink Sketch</div>
+                            <div class="choice-chip" data-value="Cinematic 3D">Cinematic 3D</div>
+                        </div>
+                    </div>
+
+                    <!-- Option 3: Camera Motion -->
+                    <div class="option-group">
+                        <label><i class="fa-solid fa-video"></i> Camera Motion</label>
+                        <div class="grid-choices" id="motionChoices">
+                            <div class="choice-chip active" data-value="Slow Zoom-in">Zoom In</div>
+                            <div class="choice-chip" data-value="Dynamic Pan-left">Pan Left</div>
+                            <div class="choice-chip" data-value="Orbital Rotation">3D Orbit</div>
+                            <div class="choice-chip" data-value="Handheld Shake">Action Shake</div>
+                        </div>
+                    </div>
+
+                    <!-- Option 4: Aspect Ratio -->
+                    <div class="option-group">
+                        <label><i class="fa-solid fa-crop-simple"></i> Aspect Ratio</label>
+                        <div class="grid-choices" id="ratioChoices">
+                            <div class="choice-chip active" data-value="16:9">16:9 (Cinema)</div>
+                            <div class="choice-chip" data-value="9:16">9:16 (Phone)</div>
+                            <div class="choice-chip" data-value="1:1">1:1 (Square)</div>
+                        </div>
+                    </div>
+
+                    <!-- Prompt display -->
+                    <div class="option-group">
+                        <label><i class="fa-solid fa-keyboard"></i> Raw AI Prompt Draft</label>
+                        <textarea class="sandbox-textarea" id="promptTextarea" rows="3" readonly></textarea>
+                    </div>
+
+                    <button class="btn btn-primary sandbox-render-btn" id="renderBtn">
+                        <i class="fa-solid fa-rotate"></i> <span>Render Mobile Animation</span>
+                    </button>
+                </div>
+
+                <!-- Right Column: Simulated Phone Frame -->
+                <div class="sandbox-renderer-panel reveal" id="rendererPanel">
+                    <div class="bezel-glow-effect" id="bezelGlow"></div>
+                    <div class="smartphone-frame" id="phoneFrame">
+                        <div class="phone-notch"><div class="phone-camera"></div></div>
+                        <div class="phone-screen">
+                            <!-- Canvas for drawing final output -->
+                            <canvas class="screen-canvas" id="phoneScreenCanvas"></canvas>
+
+                            <!-- State 1: Idle Screen -->
+                            <div class="screen-idle-state" id="idleScreen">
+                                <i class="fa-solid fa-mobile-screen-button"></i>
+                                <p>ANIVERSE GENERATOR V2.4<br><br>Configure your AI options on the left and tap 'Render' to test the mobile workflow.</p>
+                            </div>
+
+                            <!-- State 2: Rendering logs -->
+                            <div class="screen-render-state" id="renderScreen">
+                                <div class="render-header-row">
+                                    <span>TASK: RENDER_ANIMATION</span>
+                                    <span>FPS: 60</span>
+                                </div>
+                                <div class="render-console-logs" id="consoleLogs">
+                                    <!-- Console lines will append dynamically -->
+                                </div>
+                                <div class="render-status-footer">
+                                    <div class="render-progress-bar-container">
+                                        <div class="render-progress-fill" id="progressBar"></div>
+                                    </div>
+                                    <div class="render-header-row">
+                                        <span id="consoleStatusText">INJECTING NOISE...</span>
+                                        <span class="render-percentage" id="progressPercentage">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom: Prompt Formula -->
+                <div class="sandbox-formula-panel reveal">
+                    <div class="formula-header">
+                        <span class="formula-title">ANIVERSE PROMPT FORMULA CLI</span>
+                        <button class="formula-copy-btn" id="copyFormulaBtn">
+                            <i class="fa-solid fa-copy"></i> <span>Copy Formula</span>
+                        </button>
+                    </div>
+                    <div class="formula-text" id="formulaBox">
+                        /generate subject="Mech Warrior" style="Retro Anime" camera="Slow Zoom-in" ratio="16:9"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer-cta reveal">
+            <div class="footer-cta-container">
+                <p class="footer-title">THE FUTURE OF CREATIVITY IS ANIMATED</p>
+                <p class="footer-desc">No laptops needed. No previous design background required. Join hundreds of students turning their simple mobile prompts into cinema-quality animations.</p>
+                <a class="btn btn-primary btn-cta" href="http://luma.com/f4995q19" target="_blank">
+                    <i class="fa-solid fa-graduation-cap"></i> Enroll Online (<span class="price-value">₦2,000</span>)
+                </a>
+                
+                <div class="footer-contact-row">
+                    <span><i class="fa-brands fa-whatsapp"></i> +2348069914896</span>
+                    <span><i class="fa-brands fa-tiktok"></i> Aniverse.hub</span>
+                </div>
+                
+                <p class="copyright">&copy; 2026 Aniverse Hub. All Rights Reserved. Designed for creators globally.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="global.js"></script>
+    <script>
+        // Reveal scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // State & Choices variables
+        const choices = {
+            subject: 'Mech Warrior',
+            style: 'Retro Anime',
+            motion: 'Slow Zoom-in',
+            ratio: '16:9'
+        };
+
+        const promptTemplate = {
+            'Mech Warrior': "Giant futuristic mech suit activation, glowing exhaust ports, steel textures, micro-missiles loaded, hydraulic steam valves releasing",
+            'Cyberpunk Rider': "Cyberpunk girl wearing neon goggles driving futuristic bike, speeding through rain-soaked alley, electric reflections, motion blur",
+            'Aesthetic Castle': "Ancient Japanese sky pagoda, glowing blood-moon rise, floating lanterns drifting, misty purple clouds, traditional scenery",
+            'Cosmic Nebula': "Swirling digital nebula vortex, stellar dust glowing cyan, nebula clouds contracting, bright star cluster ignition, galactic wind",
+            'Retro Sports Car': "Synthwave neon retrowave sports car drifting on neon grid road, purple wireframe sunset background, digital grid horizon scrolling"
+        };
+
+        const styleTemplate = {
+            'Retro Anime': "drawn in vintage 90s anime style, nostalgic celluloid shading, hand-drawn vector art, lo-fi grit feel",
+            'Cyber Neon': "neon cyber lighting style, high contrast, vibrant saturated magenta and teal glow accents, futuristic bloom",
+            'Pencil Sketch': "raw pencil sketch style, charcoal cross-hatch shading, dynamic hand-drawn ink outlines, black and white paper texture",
+            'Cinematic 3D': "photorealistic 3D octane rendering style, cinematic lighting, shallow depth of field, dramatic shadows, hyper-detailed textures"
+        };
+
+        const motionTemplate = {
+            'Slow Zoom-in': "slow focal zoom-in, camera pushes inward, details enlarging, magnifying focal point",
+            'Dynamic Pan-left': "fast lateral panning shot left, horizontal motion sweep, background blur effect",
+            'Orbital Rotation': "360 degree slow camera orbital rotation, side perspective rotation, dimensional depth mapping",
+            'Handheld Shake': "shaky handheld camera effect, heavy motion tremors, epic action war vibrations"
+        };
+
+        // DOM elements
+        const promptTextarea = document.getElementById('promptTextarea');
+        const formulaBox = document.getElementById('formulaBox');
+        const renderBtn = document.getElementById('renderBtn');
+        const idleScreen = document.getElementById('idleScreen');
+        const renderScreen = document.getElementById('renderScreen');
+        const phoneScreenCanvas = document.getElementById('phoneScreenCanvas');
+        const consoleLogs = document.getElementById('consoleLogs');
+        const progressBar = document.getElementById('progressBar');
+        const progressPercentage = document.getElementById('progressPercentage');
+        const consoleStatusText = document.getElementById('consoleStatusText');
+        const phoneFrame = document.getElementById('phoneFrame');
+        const rendererPanel = document.getElementById('rendererPanel');
+
+        // Update Prompt Text & Formula CLI on Choice
+        function updatePromptText() {
+            const promptBody = promptTemplate[choices.subject];
+            const styleBody = styleTemplate[choices.style];
+            const motionBody = motionTemplate[choices.motion];
+            const arSuffix = choices.ratio === '16:9' ? '--ar 16:9' : (choices.ratio === '9:16' ? '--ar 9:16' : '--ar 1:1');
+            
+            const rawPrompt = `${promptBody}, ${styleBody}, ${motionBody}, cinematic composition, masterpiece, 8k resolution ${arSuffix}`;
+            promptTextarea.value = rawPrompt;
+
+            formulaBox.textContent = `/generate subject="${choices.subject}" style="${choices.style}" camera="${choices.motion}" ratio="${choices.ratio}"`;
+        }
+
+        // Setup Selection Chip Click Events
+        function setupChoices(containerId, stateKey) {
+            const chips = document.querySelectorAll(`#${containerId} .choice-chip`);
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    playClickSound();
+                    document.querySelectorAll(`#${containerId} .choice-chip`).forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    choices[stateKey] = chip.dataset.value;
+                    updatePromptText();
+                });
+            });
+        }
+
+        setupChoices('subjectChoices', 'subject');
+        setupChoices('styleChoices', 'style');
+        setupChoices('motionChoices', 'motion');
+        setupChoices('ratioChoices', 'ratio');
+
+        // Initialize Prompt
+        updatePromptText();
+
+        // Copy Formula logic
+        const copyBtn = document.getElementById('copyFormulaBtn');
+        copyBtn.addEventListener('click', () => {
+            playClickSound();
+            navigator.clipboard.writeText(formulaBox.textContent);
+            copyBtn.querySelector('span').textContent = 'Copied!';
+            copyBtn.querySelector('i').className = 'fa-solid fa-check';
+            setTimeout(() => {
+                copyBtn.querySelector('span').textContent = 'Copy Formula';
+                copyBtn.querySelector('i').className = 'fa-solid fa-copy';
+            }, 2000);
+        });
+
+        /* ==========================================================================
+           SIMULATED PHONE AI RENDER RUNNER
+           ========================================================================== */
+        let renderingActive = false;
+        let playAnimationActive = false;
+        let animationStartTime = 0;
+        const ctx = phoneScreenCanvas.getContext('2d');
+
+        renderBtn.addEventListener('click', () => {
+            if (renderingActive) return;
+            triggerRenderSequence();
+        });
+
+        function triggerRenderSequence() {
+            renderingActive = true;
+            playAnimationActive = false;
+            rendererPanel.classList.add('rendering');
+            
+            // Adjust canvas aspect ratio layout inside phone screen
+            phoneScreenCanvas.classList.remove('active');
+            if (choices.ratio === '16:9') {
+                phoneScreenCanvas.style.aspectRatio = '16 / 9';
+                phoneScreenCanvas.style.width = '100%';
+                phoneScreenCanvas.style.height = 'auto';
+            } else if (choices.ratio === '9:16') {
+                phoneScreenCanvas.style.aspectRatio = '9 / 16';
+                phoneScreenCanvas.style.width = 'auto';
+                phoneScreenCanvas.style.height = '100%';
+            } else {
+                phoneScreenCanvas.style.aspectRatio = '1 / 1';
+                phoneScreenCanvas.style.width = '90%';
+                phoneScreenCanvas.style.height = 'auto';
+            }
+
+            idleScreen.style.display = 'none';
+            renderScreen.classList.add('active');
+            consoleLogs.innerHTML = '';
+            
+            // Reset Progress Bar
+            progressBar.style.width = '0%';
+            progressPercentage.textContent = '0%';
+
+            const logLines = [
+                'CONNECTING TO ANIVERSE-GRID CLUSTER...',
+                'ALLOCATING SHADER REGISTER SHARDS...',
+                `PARSING PARAMS: RATIO=${choices.ratio}, RES=8K`,
+                `PARSING CONTENT PROMPT: "${choices.subject}"`,
+                `APPLYING ARTISTIC TEXTURE WEIGHTS: "${choices.style}"`,
+                'CONSTRUCTING DYNAMIC LATENT SCENE SKELETON...',
+                `INJECTING CAMERA KINEMATICS: "${choices.motion}"`,
+                'STAGE 1: GENERATING HIGH-FREQ LATENT VALUES...',
+                'STAGE 2: NOISE DIFFUSION INJECTION [STABLE]...',
+                'STAGE 3: RESOLVING COLOR SPECTRUM MATRICES...',
+                'STAGE 4: UPSCALE RESOLUTION SHARPENING...',
+                'COMPILING DYNAMIC ANIMATED SHADERS...',
+                'SAVING TEMP MEMORY CACHE...',
+                'ANIMATION RENDER SUCCESSFUL. OUTPUT ONLINE.'
+            ];
+
+            let logIndex = 0;
+            let progress = 0;
+
+            // Loop console printouts
+            const printLog = () => {
+                if (logIndex < logLines.length) {
+                    const line = document.createElement('div');
+                    line.className = 'console-line';
+                    line.innerHTML = `<span style="color: var(--primary);">></span> ${logLines[logIndex]}`;
+                    consoleLogs.appendChild(line);
+                    consoleLogs.scrollTop = consoleLogs.scrollHeight;
+                    
+                    // Trigger mechanical ticks
+                    playHoverSound();
+
+                    // Speed up progress bar proportionally
+                    progress = Math.min(Math.floor((logIndex / logLines.length) * 100), 95);
+                    progressBar.style.width = `${progress}%`;
+                    progressPercentage.textContent = `${progress}%`;
+                    
+                    // Dynamic status footer text
+                    if (progress < 25) consoleStatusText.textContent = 'CONNECTING SERVER...';
+                    else if (progress < 50) consoleStatusText.textContent = 'DENSITY DIFFUSION...';
+                    else if (progress < 80) consoleStatusText.textContent = 'GENERATING VECTORS...';
+                    else consoleStatusText.textContent = 'COMPILING FRAMES...';
+
+                    logIndex++;
+                    // Randomized log printing speeds for high realism
+                    setTimeout(printLog, 150 + Math.random() * 200);
+                } else {
+                    // Complete progress bar
+                    progress = 100;
+                    progressBar.style.width = '100%';
+                    progressPercentage.textContent = '100%';
+                    consoleStatusText.textContent = 'RENDER COMPLETE';
+                    
+                    setTimeout(() => {
+                        // Switch screen to animation output
+                        playPowerSound();
+                        renderScreen.classList.remove('active');
+                        phoneScreenCanvas.classList.add('active');
+                        
+                        renderingActive = false;
+                        playAnimationActive = true;
+                        animationStartTime = Date.now();
+                        rendererPanel.classList.remove('rendering');
+                    }, 500);
+                }
+            };
+
+            printLog();
+        }
+
+        /* ==========================================================================
+           PROCEDURAL GENERATOR PREVIEWS FOR PHONE CANVAS
+           ========================================================================== */
+        // Set canvas resolutions
+        phoneScreenCanvas.width = 360;
+        phoneScreenCanvas.height = 640;
+
+        const renderSandboxAnimation = () => {
+            if (playAnimationActive) {
+                const time = (Date.now() - animationStartTime) / 1000;
+                const w = phoneScreenCanvas.width;
+                const h = phoneScreenCanvas.height;
+
+                ctx.save();
+                
+                // 1. Setup Camera Motion Transformation Matrix
+                const cx = w / 2;
+                const cy = h / 2;
+                if (choices.motion === 'Slow Zoom-in') {
+                    const zoom = 1 + (time % 8) * 0.05;
+                    ctx.translate(cx, cy);
+                    ctx.scale(zoom, zoom);
+                    ctx.translate(-cx, -cy);
+                } else if (choices.motion === 'Dynamic Pan-left') {
+                    const shiftX = -(time * 25) % 40;
+                    ctx.translate(shiftX, 0);
+                } else if (choices.motion === 'Orbital Rotation') {
+                    ctx.translate(cx, cy);
+                    ctx.rotate(Math.sin(time * 0.5) * 0.15);
+                    ctx.translate(-cx, -cy);
+                } else if (choices.motion === 'Handheld Shake') {
+                    const shakeX = Math.sin(time * 25) * 2;
+                    const shakeY = Math.cos(time * 29) * 2;
+                    ctx.translate(shakeX, shakeY);
+                }
+
+                // 2. Clear & Draw Procedural base
+                ctx.fillStyle = '#05040a';
+                ctx.fillRect(-50, -50, w + 100, h + 100);
+
+                // 3. Draw Subject
+                if (choices.subject === 'Mech Warrior') {
+                    // Draw a giant cyber mech face/head silhouette
+                    ctx.fillStyle = 'rgba(255, 107, 0, 0.08)';
+                    ctx.fillRect(-50, -50, w + 100, h + 100);
+
+                    ctx.strokeStyle = '#ff6b00';
+                    ctx.lineWidth = 2;
+                    
+                    // Draw armor plates
+                    ctx.beginPath();
+                    ctx.moveTo(cx - 30, cy - 50);
+                    ctx.lineTo(cx + 30, cy - 50);
+                    ctx.lineTo(cx + 45, cy - 10);
+                    ctx.lineTo(cx + 25, cy + 30);
+                    ctx.lineTo(cx - 25, cy + 30);
+                    ctx.lineTo(cx - 45, cy - 10);
+                    ctx.closePath();
+                    ctx.stroke();
+
+                    // Glowing mech visor/eye slit
+                    ctx.fillStyle = '#00f5d4';
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#00f5d4';
+                    ctx.fillRect(cx - 25, cy - 20, 50, 6);
+                    ctx.shadowBlur = 0;
+
+                    // Hydraulic piston tubes
+                    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(cx - 40, cy + 10); ctx.lineTo(cx - 40, cy + 50);
+                    ctx.moveTo(cx + 40, cy + 10); ctx.lineTo(cx + 40, cy + 50);
+                    ctx.stroke();
+
+                    // Flashing indicators
+                    ctx.fillStyle = `rgba(255, 0, 127, ${0.5 + Math.sin(time * 5) * 0.5})`;
+                    ctx.beginPath(); ctx.arc(cx - 15, cy - 35, 3, 0, Math.PI * 2); ctx.fill();
+                    ctx.beginPath(); ctx.arc(cx + 15, cy - 35, 3, 0, Math.PI * 2); ctx.fill();
+
+                } else if (choices.subject === 'Cyberpunk Rider') {
+                    // Draw matrix neon city highway grids with bike silhouette
+                    ctx.strokeStyle = 'rgba(0, 245, 212, 0.2)';
+                    ctx.lineWidth = 1;
+                    for (let i = -50; i < w + 50; i += 20) {
+                        ctx.beginPath();
+                        ctx.moveTo(i, 0); ctx.lineTo(i, h);
+                        ctx.stroke();
+                    }
+
+                    // Bike silhouette
+                    ctx.fillStyle = '#100c1c';
+                    ctx.beginPath();
+                    ctx.ellipse(cx, cy + 20, 30, 10, 0, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Glowing neon wheels
+                    ctx.strokeStyle = '#ff007f';
+                    ctx.lineWidth = 3;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ff007f';
+                    ctx.beginPath(); ctx.arc(cx - 20, cy + 20, 8, 0, Math.PI*2); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(cx + 20, cy + 20, 8, 0, Math.PI*2); ctx.stroke();
+                    ctx.shadowBlur = 0;
+
+                    // Laser light trail lines
+                    ctx.strokeStyle = 'rgba(255, 170, 0, 0.8)';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(cx - 20, cy + 15);
+                    ctx.lineTo(cx - 90, cy + 10 + Math.sin(time*10)*5);
+                    ctx.stroke();
+
+                } else if (choices.subject === 'Aesthetic Castle') {
+                    // Pagoda mountain temple sunset
+                    const skyGrad = ctx.createLinearGradient(0, 0, 0, h);
+                    skyGrad.addColorStop(0, '#5f0a87');
+                    skyGrad.addColorStop(1, '#a4508b');
+                    ctx.fillStyle = skyGrad;
+                    ctx.fillRect(-50, -50, w + 100, h + 100);
+
+                    // Giant rising sun
+                    ctx.fillStyle = '#f9bec7';
+                    ctx.beginPath();
+                    ctx.arc(cx, cy + 10, 40, 0, Math.PI*2);
+                    ctx.fill();
+
+                    // Pagoda shape
+                    ctx.fillStyle = '#1a0c24';
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy - 35);
+                    ctx.lineTo(cx - 20, cy - 10);
+                    ctx.lineTo(cx + 20, cy - 10);
+                    ctx.closePath(); ctx.fill();
+
+                    ctx.fillRect(cx - 15, cy - 10, 30, 20); // base 1
+                    ctx.fillRect(cx - 25, cy + 10, 50, 4); // roof 2
+
+                    ctx.fillRect(cx - 20, cy + 14, 40, 30); // base 2
+                    ctx.fillRect(cx - 30, cy + 44, 60, 4); // roof 3
+
+                    // Glowing floating particles
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                    for (let p = 0; p < 8; p++) {
+                        const px = (cx + Math.sin(p + time) * 40);
+                        const py = (cy + 70 - (p * 15 + time * 10) % 90);
+                        ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI*2); ctx.fill();
+                    }
+
+                } else if (choices.subject === 'Cosmic Nebula') {
+                    // Swirling star vortex field
+                    ctx.fillStyle = '#020105';
+                    ctx.fillRect(-50, -50, w + 100, h + 100);
+
+                    const starsCount = 45;
+                    ctx.fillStyle = 'rgba(0, 245, 212, 0.8)';
+                    for (let s = 0; s < starsCount; s++) {
+                        const radius = (s * 4 + time * 30) % (w * 0.85);
+                        const angle = s * 0.3 + time * 0.6;
+                        const sx = cx + Math.cos(angle) * radius;
+                        const sy = cy + Math.sin(angle) * radius;
+                        
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, 1.5 + (radius/60), 0, Math.PI*2);
+                        ctx.fill();
+                    }
+
+                    // Core nebula dust glow
+                    const nebGrad = ctx.createRadialGradient(cx, cy, 2, cx, cy, 45);
+                    nebGrad.addColorStop(0, 'rgba(157, 78, 221, 0.6)');
+                    nebGrad.addColorStop(0.5, 'rgba(255, 0, 127, 0.15)');
+                    nebGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = nebGrad;
+                    ctx.beginPath(); ctx.arc(cx, cy, 50, 0, Math.PI*2); ctx.fill();
+
+                } else if (choices.subject === 'Retro Sports Car') {
+                    // Outrun retro grid drive sunset
+                    const skyGrad = ctx.createLinearGradient(0, 0, 0, cy);
+                    skyGrad.addColorStop(0, '#ff007f');
+                    skyGrad.addColorStop(1, '#ffaa00');
+                    ctx.fillStyle = skyGrad;
+                    ctx.fillRect(-50, -50, w + 100, cy + 50);
+
+                    // Sun line cuts
+                    ctx.fillStyle = '#05040a';
+                    for (let sy = cy - 20; sy < cy + 10; sy += 8) {
+                        ctx.fillRect(-50, sy, w + 100, 2);
+                    }
+
+                    // Drifting retro wireframe car
+                    ctx.strokeStyle = '#00f5d4';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(cx - 20, cy + 10);
+                    ctx.lineTo(cx + 20, cy + 10);
+                    ctx.lineTo(cx + 12, cy - 2);
+                    ctx.lineTo(cx - 12, cy - 2);
+                    ctx.closePath();
+                    ctx.stroke();
+                    // Wheels
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(cx - 18, cy + 10, 4, 3);
+                    ctx.fillRect(cx + 14, cy + 10, 4, 3);
+
+                    // Grid lines perspective below horizon
+                    ctx.strokeStyle = 'rgba(157, 78, 221, 0.4)';
+                    ctx.lineWidth = 1;
+                    const gridHorizon = cy + 12;
+                    for (let gx = -100; gx < w + 100; gx += 30) {
+                        ctx.beginPath();
+                        ctx.moveTo(gx, h);
+                        ctx.lineTo(cx + (gx - cx) * 0.15, gridHorizon);
+                        ctx.stroke();
+                    }
+                }
+
+                // 4. Apply Style Preset CSS filter emulation on canvas context
+                ctx.restore();
+
+                // Emulate sketch overlay/textures
+                if (choices.style === 'Pencil Sketch') {
+                    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+                    for (let n = 0; n < w; n += 6) {
+                        ctx.fillRect(n, 0, 1, h);
+                    }
+                }
+            }
+            requestAnimationFrame(renderSandboxAnimation);
+        };
+        
+        renderSandboxAnimation();
+    </script>
+</body>
+</html>

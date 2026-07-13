@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore real mobile animation projects created by students of the Aniverse Hub course.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Student Showcase Gallery - Aniverse Hub</title>
+</head>
+<body>
+    <!-- Background Particles Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>⚡ <strong>No laptop. No prior experience.</strong> Just your phone, your ideas, and the right guidance.</p>
+    </div>
+
+    <!-- Navigation -->
+    <header class="nav" aria-label="Primary navigation">
+        <div class="aniverse-logo">
+            <span class="logo-icon">🎬</span>
+            <p>ANIVERSE HUB</p>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="sandbox.html">PROMPT SANDBOX</a></li>
+                <li><a href="gallery.html">STUDENT GALLERY</a></li>
+                <li><a href="index.html#curriculum">CURRICULUM</a></li>
+            </ul>
+        </nav>
+        <a class="btn btn-primary nav-enroll" href="http://luma.com/f4995q19" target="_blank">
+            <span>Enroll Now</span> <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </header>
+
+    <main>
+        <!-- Gallery Header -->
+        <section class="gallery-section">
+            <div class="section-intro reveal">
+                <p class="section-label">STUDENT WORK</p>
+                <h1>Mobile Animation Gallery</h1>
+                <p>Browse through real cinematic clips generated, edited, and rendered entirely on smartphones by our students.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="gallery-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Styles</button>
+                <button class="filter-btn" data-filter="cyberpunk">Cyberpunk / Neon</button>
+                <button class="filter-btn" data-filter="lofi">Lofi / Aesthetic</button>
+                <button class="filter-btn" data-filter="scifi">Sci-Fi / Action</button>
+                <button class="filter-btn" data-filter="cinematic">Cinematic 3D</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="gallery-grid">
+                <!-- Card 1: Cyberpunk -->
+                <div class="gallery-card reveal" data-category="cyberpunk">
+                    <div class="card-preview-container">
+                        <canvas class="card-preview-canvas" id="canvas-cyberpunk-city"></canvas>
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <span class="card-style-badge">Cyberpunk</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Neo-Tokyo Rain Drive</h3>
+                        <p class="student-author">By Chidi (Week 2 Project)</p>
+                        <div class="card-prompt-box">
+                            Cyberpunk girl on lightcycle, high speed drive, reflections on wet neon streets, Tokyo night, anime style, 8k --motion 8 --ar 16:9
+                        </div>
+                        <div class="gallery-card-meta">
+                            <span><i class="fa-solid fa-crop-simple"></i> 16:9 Aspect</span>
+                            <span><i class="fa-solid fa-bolt"></i> Gen-3 Alpha</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Lofi Sakura -->
+                <div class="gallery-card reveal" data-category="lofi">
+                    <div class="card-preview-container">
+                        <canvas class="card-preview-canvas" id="canvas-lofi-sakura"></canvas>
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <span class="card-style-badge">Lofi</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Pagoda Sunset Chill</h3>
+                        <p class="student-author">By Fatima (Week 3 Project)</p>
+                        <div class="card-prompt-box">
+                            Traditional Japanese pagoda silhouette, huge glowing sun setting, cherry blossom petals blowing in heavy wind, retro anime aesthetic, nostalgic lofi vibes --ar 16:9
+                        </div>
+                        <div class="gallery-card-meta">
+                            <span><i class="fa-solid fa-crop-simple"></i> 16:9 Aspect</span>
+                            <span><i class="fa-solid fa-bolt"></i> Luma Dream Machine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Space Warp -->
+                <div class="gallery-card reveal" data-category="scifi">
+                    <div class="card-preview-container">
+                        <canvas class="card-preview-canvas" id="canvas-space-warp"></canvas>
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <span class="card-style-badge">Sci-Fi</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Hyperdrive Star Warp</h3>
+                        <p class="student-author">By Tunde (Week 4 Project)</p>
+                        <div class="card-prompt-box">
+                            Spaceship cockpit view, hyperdrive jump, stars stretching into glowing cyan streaks, space battle fleet silhouette in background, highly detailed --ar 16:9
+                        </div>
+                        <div class="gallery-card-meta">
+                            <span><i class="fa-solid fa-crop-simple"></i> 16:9 Aspect</span>
+                            <span><i class="fa-solid fa-bolt"></i> Kling AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Mech Sphere -->
+                <div class="gallery-card reveal" data-category="cinematic">
+                    <div class="card-preview-container">
+                        <canvas class="card-preview-canvas" id="canvas-mech-sphere"></canvas>
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <span class="card-style-badge">Cinematic</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Cybernetic Sphere Activation</h3>
+                        <p class="student-author">By Emmanuel (Week 1 Project)</p>
+                        <div class="card-prompt-box">
+                            3D render of cybernetic chrome orb glowing with core energy, electric sparks flying, dark room, reflection mapping, metallic texture, octane render --ar 16:9
+                        </div>
+                        <div class="gallery-card-meta">
+                            <span><i class="fa-solid fa-crop-simple"></i> 16:9 Aspect</span>
+                            <span><i class="fa-solid fa-bolt"></i> Runway Gen-3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Lofi Sunset Train -->
+                <div class="gallery-card reveal" data-category="lofi">
+                    <div class="card-preview-container">
+                        <canvas class="card-preview-canvas" id="canvas-lofi-train"></canvas>
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <span class="card-style-badge">Lofi</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Sunset Train Ride</h3>
+                        <p class="student-author">By Sarah (Week 3 Project)</p>
+                        <div class="card-prompt-box">
+                            View from inside a moving train window, power lines scrolling fast, beautiful red orange sunset sky, dynamic clouds, anime aesthetic --ar 16:9
+                        </div>
+                        <div class="gallery-card-meta">
+                            <span><i class="fa-solid fa-crop-simple"></i> 16:9 Aspect</span>
+                            <span><i class="fa-solid fa-bolt"></i> Luma Dream Machine</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cinematic Modal Overlay -->
+        <div class="cinematic-modal" id="videoModal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Neo-Tokyo Rain Drive</h2>
+                    <button class="modal-close-btn" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-content-body">
+                    <div class="modal-video-view">
+                        <canvas id="modalCanvas"></canvas>
+                    </div>
+                    <div class="modal-details">
+                        <p class="modal-author" id="modalAuthor">By Chidi (Week 2 Project)</p>
+                        <p class="modal-prompt" id="modalPrompt">Prompt Details</p>
+                        <ul class="modal-specs">
+                            <li><strong>AI Engine:</strong> <span id="modalSpecEngine">Gen-3 Alpha</span></li>
+                            <li><strong>Aspect Ratio:</strong> 16:9 (Cinematic)</li>
+                            <li><strong>Render Time:</strong> ~45 seconds on Mobile</li>
+                            <li><strong>Post-processing:</strong> CapCut Voiceover & Sound Sync</li>
+                        </ul>
+                        <a class="btn btn-primary" href="http://luma.com/f4995q19" target="_blank" style="margin-top: auto;">
+                            <span>Enroll to Learn This</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <section class="footer-cta reveal">
+            <div class="footer-cta-container">
+                <p class="footer-title">THE FUTURE OF CREATIVITY IS ANIMATED</p>
+                <p class="footer-desc">No laptops needed. No previous design background required. Join hundreds of students turning their simple mobile prompts into cinema-quality animations.</p>
+                <a class="btn btn-primary btn-cta" href="http://luma.com/f4995q19" target="_blank">
+                    <i class="fa-solid fa-graduation-cap"></i> Enroll Online (<span class="price-value">₦2,000</span>)
+                </a>
+                
+                <div class="footer-contact-row">
+                    <span><i class="fa-brands fa-whatsapp"></i> +2348069914896</span>
+                    <span><i class="fa-brands fa-tiktok"></i> Aniverse.hub</span>
+                </div>
+                
+                <p class="copyright">&copy; 2026 Aniverse Hub. All Rights Reserved. Designed for creators globally.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="global.js"></script>
+    <script>
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                galleryCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8) translateY(20px)';
+                    setTimeout(() => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1) translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }, 300);
+                });
+            });
+        });
+
+        // 3D Card Hover Tilts
+        galleryCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const tiltX = (y / (rect.height / 2)) * -6; // max 6 deg
+                const tiltY = (x / (rect.width / 2)) * 6;  // max 6 deg
+                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        /* ==========================================================================
+           CANVAS PREVIEW DRAWING LOOPS
+           ========================================================================== */
+        const canvasRenderers = {
+            'canvas-cyberpunk-city': (ctx, w, h, time) => {
+                // Cyberpunk City Silhouette & Neon Rain
+                ctx.fillStyle = '#0a0812';
+                ctx.fillRect(0, 0, w, h);
+                
+                // Draw some skyline silhouettes
+                ctx.fillStyle = '#060408';
+                for (let i = 0; i < w; i += 40) {
+                    const bh = 50 + Math.sin(i * 12 + time * 0.1) * 20 + (i % 30) * 1.5;
+                    ctx.fillRect(i, h - bh, 35, bh);
+                    // Draw little neon window dots
+                    ctx.fillStyle = `rgba(0, 245, 212, ${0.3 + Math.sin(time + i) * 0.2})`;
+                    if (bh > 40) ctx.fillRect(i + 10, h - bh + 15, 4, 4);
+                    if (bh > 60) ctx.fillRect(i + 20, h - bh + 30, 4, 4);
+                    ctx.fillStyle = '#060408';
+                }
+
+                // Draw heavy neon-rain lines
+                ctx.strokeStyle = 'rgba(255, 0, 127, 0.4)';
+                ctx.lineWidth = 1;
+                for (let j = 0; j < 12; j++) {
+                    const rx = (j * 43 + time * 120) % w;
+                    const ry = (j * 17 + time * 320) % h;
+                    ctx.beginPath();
+                    ctx.moveTo(rx, ry);
+                    ctx.lineTo(rx - 3, ry + 15);
+                    ctx.stroke();
+                }
+
+                // Cyberpunk girl glow element
+                ctx.fillStyle = '#ff6b00';
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#ff6b00';
+                ctx.beginPath();
+                ctx.arc(w * 0.6, h * 0.65 + Math.sin(time * 2) * 3, 10, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0; // reset
+            },
+            'canvas-lofi-sakura': (ctx, w, h, time) => {
+                // Sunset Pagoda & Falling Sakura Petals
+                const grad = ctx.createLinearGradient(0, 0, 0, h);
+                grad.addColorStop(0, '#f25c54'); // red orange sunset
+                grad.addColorStop(0.5, '#f48c06');
+                grad.addColorStop(1, '#ffd166');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, w, h);
+
+                // Huge sun setting
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.beginPath();
+                ctx.arc(w * 0.5, h * 0.7, 45, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Pagoda Silhouette
+                ctx.fillStyle = '#1c1524';
+                ctx.fillRect(w * 0.15, h * 0.45, 25, h * 0.55);
+                ctx.fillRect(w * 0.12, h * 0.45, 37, 5); // roof 1
+                ctx.fillRect(w * 0.14, h * 0.58, 29, 4); // roof 2
+
+                // Falling sakura leaves
+                ctx.fillStyle = 'rgba(255, 138, 174, 0.85)';
+                for (let k = 0; k < 18; k++) {
+                    const sx = (k * 25 - time * 40) % w;
+                    const sy = (k * 18 + time * 30) % h;
+                    ctx.beginPath();
+                    ctx.ellipse(sx < 0 ? sx + w : sx, sy, 4, 2, Math.PI/4 + time, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            },
+            'canvas-space-warp': (ctx, w, h, time) => {
+                // Spaceship hyperspeed warp
+                ctx.fillStyle = '#030206';
+                ctx.fillRect(0, 0, w, h);
+
+                // Flying stars
+                ctx.strokeStyle = 'rgba(0, 245, 212, 0.7)';
+                ctx.lineWidth = 1.5;
+                const centerX = w / 2;
+                const centerY = h / 2;
+                for (let l = 0; l < 25; l++) {
+                    const angle = l * 0.25;
+                    const dist = (l * 12 + time * 180) % (w * 0.6);
+                    const sx = centerX + Math.cos(angle) * dist;
+                    const sy = centerY + Math.sin(angle) * dist;
+                    const ex = centerX + Math.cos(angle) * (dist + 20);
+                    const ey = centerY + Math.sin(angle) * (dist + 20);
+                    ctx.beginPath();
+                    ctx.moveTo(sx, sy);
+                    ctx.lineTo(ex, ey);
+                    ctx.stroke();
+                }
+
+                // Spaceship center indicator (vector drawing)
+                ctx.fillStyle = 'rgba(157, 78, 221, 0.9)';
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY - 6 + Math.sin(time * 4) * 2);
+                ctx.lineTo(centerX - 15, centerY + 10 + Math.sin(time * 4) * 2);
+                ctx.lineTo(centerX + 15, centerY + 10 + Math.sin(time * 4) * 2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            },
+            'canvas-mech-sphere': (ctx, w, h, time) => {
+                // Holographic sphere rotating
+                ctx.fillStyle = '#050308';
+                ctx.fillRect(0, 0, w, h);
+
+                const cx = w / 2;
+                const cy = h / 2;
+
+                // Glowing background grid
+                ctx.strokeStyle = 'rgba(157, 78, 221, 0.15)';
+                ctx.lineWidth = 1;
+                for (let y = 0; y < h; y += 20) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(w, y);
+                    ctx.stroke();
+                }
+
+                // Pulsing outer ring
+                ctx.strokeStyle = 'rgba(255, 107, 0, 0.4)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(cx, cy, 35 + Math.sin(time * 3) * 3, 0, Math.PI * 2);
+                ctx.stroke();
+
+                // Glowing sphere core
+                ctx.fillStyle = 'rgba(0, 245, 212, 0.85)';
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = 'rgba(0, 245, 212, 0.8)';
+                ctx.beginPath();
+                ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0; // reset
+
+                // Rotating metallic orbital line
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, 45, 12, time * 1.5, 0, Math.PI * 2);
+                ctx.stroke();
+            },
+            'canvas-lofi-train': (ctx, w, h, time) => {
+                // Move sunset sky train window view
+                const skyGrad = ctx.createLinearGradient(0, 0, 0, h);
+                skyGrad.addColorStop(0, '#582f0e'); // sunset brown orange
+                skyGrad.addColorStop(0.5, '#a04668'); // pinkish sunset
+                skyGrad.addColorStop(1, '#ffb5a7'); // yellow-peach
+                ctx.fillStyle = skyGrad;
+                ctx.fillRect(0, 0, w, h);
+
+                // Scrolling power line wire lines
+                ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(0, h * 0.45 + Math.sin(time * 3) * 8);
+                ctx.lineTo(w, h * 0.45 + Math.sin(time * 3 + 2) * 8);
+                ctx.stroke();
+
+                // Scrolling poles
+                ctx.fillStyle = '#1c1524';
+                for (let n = 0; n < w + 100; n += 150) {
+                    const px = (n - time * 240) % (w + 150);
+                    ctx.fillRect(px < -20 ? px + w + 150 : px, 0, 4, h);
+                }
+
+                // Window dark foreground frame mask
+                ctx.fillStyle = '#09080d';
+                ctx.fillRect(0, 0, 15, h);
+                ctx.fillRect(w - 15, 0, 15, h);
+                ctx.fillRect(0, 0, w, 15);
+                ctx.fillRect(0, h - 25, w, 25);
+            }
+        };
+
+        // Initialize preview render loop
+        const activeCanvases = [];
+        Object.keys(canvasRenderers).forEach(id => {
+            const canvas = document.getElementById(id);
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                canvas.width = 360;
+                canvas.height = 202; // 16:9 aspect
+                activeCanvases.push({ canvas, ctx, id });
+            }
+        });
+
+        let startTime = Date.now();
+        const drawPreviews = () => {
+            const time = (Date.now() - startTime) / 1000;
+            activeCanvases.forEach(item => {
+                // If it is in viewport or active, draw
+                canvasRenderers[item.id](item.ctx, item.canvas.width, item.canvas.height, time);
+            });
+            requestAnimationFrame(drawPreviews);
+        };
+        drawPreviews();
+
+        /* ==========================================================================
+           CINEMATIC MODAL CONTROLS
+           ========================================================================== */
+        const modal = document.getElementById('videoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalAuthor = document.getElementById('modalAuthor');
+        const modalPrompt = document.getElementById('modalPrompt');
+        const modalSpecEngine = document.getElementById('modalSpecEngine');
+        const modalClose = document.getElementById('modalClose');
+        const modalCanvas = document.getElementById('modalCanvas');
+        const modalCtx = modalCanvas.getContext('2d');
+        
+        modalCanvas.width = 640;
+        modalCanvas.height = 360; // 16:9 large view
+
+        let modalActiveRenderer = null;
+
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').textContent;
+                const author = card.querySelector('.student-author').textContent;
+                const prompt = card.querySelector('.card-prompt-box').textContent.trim();
+                const engine = card.querySelector('.gallery-card-meta span:nth-child(2)').textContent.trim();
+                const canvasId = card.querySelector('.card-preview-canvas').id;
+
+                // Setup modal contents
+                modalTitle.textContent = title;
+                modalAuthor.textContent = author;
+                modalPrompt.textContent = `"${prompt}"`;
+                modalSpecEngine.textContent = engine;
+                modalActiveRenderer = canvasRenderers[canvasId];
+
+                // Open modal
+                modal.classList.add('open');
+                playClickSound();
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('open');
+            playClickSound();
+            modalActiveRenderer = null;
+        });
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                modalActiveRenderer = null;
+            }
+        });
+
+        // Render loop for the active modal video canvas
+        const drawModalVideo = () => {
+            if (modal.classList.contains('open') && modalActiveRenderer) {
+                const time = (Date.now() - startTime) / 1000;
+                modalActiveRenderer(modalCtx, modalCanvas.width, modalCanvas.height, time);
+            }
+            requestAnimationFrame(drawModalVideo);
+        };
+        drawModalVideo();
+    </script>
+</body>
+</html>
