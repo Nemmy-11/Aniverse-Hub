@@ -12,11 +12,11 @@ const AppState = {
     synthIntervalId: null,
     currentCurrency: localStorage.getItem('aniverse_currency') || 'NGN',
     pricing: {
-        NGN: { symbol: '₦', rate: 1, label: '₦2,000' },
-        USD: { symbol: '$', rate: 0.0025, label: '$5' },
-        GHS: { symbol: 'GH₵', rate: 0.03, label: 'GH₵60' },
-        KES: { symbol: 'KSh', rate: 0.35, label: 'KSh 700' },
-        ZAR: { symbol: 'R', rate: 0.045, label: 'R 95' }
+        NGN: { symbol: '₦', rate: 1, label: '₦15,000' },
+        USD: { symbol: '$', rate: 0.0025, label: '$38' },
+        GHS: { symbol: 'GH₵', rate: 0.03, label: 'GH₵450' },
+        KES: { symbol: 'KSh', rate: 0.35, label: 'KSh 5,250' },
+        ZAR: { symbol: 'R', rate: 0.045, label: 'R 710' }
     }
 };
 
@@ -80,7 +80,7 @@ function applyCurrencyPricing(currency) {
         setTimeout(() => {
             // Apply corresponding price text
             if (el.classList.contains('price-value') || el.closest('.price-bubble-3d') || el.tagName === 'P' && el.textContent.includes('₦')) {
-                // If it is the main discounted enrollment price (₦2,000 / $5 equivalent)
+                // If it is the main discounted enrollment price (₦15,000 / $38 equivalent)
                 el.textContent = AppState.pricing[currency].label;
             } else {
                 // If it's the original full price (₦10,000 / $25 equivalent)
